@@ -6,18 +6,23 @@ import 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 import timezone from './components/timezone';
 import Navigation from './components/navigation';
-
+import Login from './components/Login';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 function App() {
   return (
-    <div className="App">      
-          <Router>
-            <Navigation/>  
-            <div className="container">
-              <Route exact path="/" component={timezone}/>        
-              <Route exact path="/time" component={timezone}/>                                
-            </div>                              
-          </Router>  
-    </div>
+    <Provider store={store}>
+      <div className="App">      
+            <Router>
+              <Navigation/>  
+              <div className="container">
+                <Route exact path="/" component={timezone}/>        
+                <Route exact path="/time" component={timezone}/>                                
+                <Route exact path="/login" component={Login}/>                                
+              </div>                              
+            </Router>  
+      </div>
+    </Provider>
   );
 }
 
