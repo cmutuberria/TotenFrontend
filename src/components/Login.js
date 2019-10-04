@@ -5,7 +5,7 @@ import saveUserAuth from '../redux/actions/saveUserAuth'
 import clearUserAuth from "../redux/actions/clearUserAuth";
 
 
-class Login extends Component {
+class login extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -25,6 +25,10 @@ class Login extends Component {
 
      onSubmit = async  (e) => {
         e.preventDefault();
+        this.setState({
+             hasError: false,
+             errorMsg: ""
+        })
         try {
             const response = await Axios.put('https://dev.tuten.cl:443/TutenREST/rest/user/'+this.state.email, {}, {
                 headers: {
@@ -35,7 +39,7 @@ class Login extends Component {
 
                 }
             });
-            console.log(response.data);
+            console.log(response);
             if (response.data) {
                 const userAuthenticated = response.data;
                 const token = response.data.sessionTokenBck;
@@ -49,7 +53,10 @@ class Login extends Component {
                 })
             }            
         } catch (error) {
-            console.error(error);
+            this.setState({
+                hasError:true,
+                errorMsg:"Email, password o app incorrecto"
+            })
         }
     };
     render() {
@@ -118,4 +125,4 @@ const mapDispatchToProps = {
         saveUserAuth,
         clearUserAuth
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(login)

@@ -6,9 +6,13 @@ import 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 import timezone from './components/timezone';
 import Navigation from './components/navigation';
-import Login from './components/Login';
+import login from './components/login';
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import home from './components/home';
+import list from './components/list';
+import SecureRoute from './components/secureRoute';
+import stack from './components/stack';
 function App() {
   return (
     <Provider store={store}>
@@ -16,9 +20,11 @@ function App() {
             <Router>
               <Navigation/>  
               <div className="container">
-                <Route exact path="/" component={timezone}/>        
+                <Route exact path="/" component={home}/>        
+                <Route exact path="/stack" component={stack}/>                                
                 <Route exact path="/time" component={timezone}/>                                
-                <Route exact path="/login" component={Login}/>                                
+                <Route exact path="/login" component={login}/>                                
+                <SecureRoute exact path="/list" component={list}/>                                
               </div>                              
             </Router>  
       </div>
