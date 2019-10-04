@@ -12,6 +12,7 @@ class list extends Component {
         this.state={
             bookings:[],
             notFound:false,
+            showFiltro:true,
             filtro:{
                 bookingId:"",
                 compBookingId: ">=",
@@ -108,12 +109,25 @@ class list extends Component {
         });
         this.getBookings();
     }
+    changeShowFiltro=()=>{
+        this.setState((state) => {
+            return {
+                showFiltro: !state.showFiltro
+            }
+        })
+    }
 
     render() {
         return (
                 <div className="card">
                     <div className="card-content">
                         <div className="dataTable_filter">
+                            <div className="row">
+                                <div className="col s12">
+                                    <a onClick = {this.changeShowFiltro}>{this.state.showFiltro?"Ocultar":"Mostrar"} Filtro </a>
+                                </div>
+                            </div>
+                            {this.state.showFiltro&&
                             <form action="" onSubmit={this.onSubmit}>
                                 <div className="row">
                                     <div className="col s10">
@@ -179,7 +193,7 @@ class list extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </form>           
+                            </form> }          
                        </div>
                     {!this.state.notFound?
                        <table className="responsive">
