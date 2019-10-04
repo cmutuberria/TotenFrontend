@@ -29,7 +29,7 @@ yarn install
 Para correr la apalicación ejecute:
 yarn start
 
-## ServicioRest pregunta 1
+## ServicioRest pregunta 2
 Para que la aplicación se comunique con el servicio rest
 en el fichero src/components/timezone.js en la linea 30 cambiar la url actual
-por la url donde está corriendo la aplicacion ServicioRest que da respuesta a la pregunta 1. 
+por la url donde está corriendo la aplicacion ServicioRest que da respuesta a la pregunta 2. 
