@@ -6,7 +6,7 @@ import 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 import timezone from './components/timezone';
 import Navigation from './components/navigation';
-import login from './components/login';
+import login from './components/myLogin';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import home from './components/home';
